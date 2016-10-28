@@ -1,0 +1,8 @@
+GitPython==2.1.0
+attrs==16.2.0
+beautifulsoup4==4.5.1
+gitdb2==2.0.0
+python-dateutil==2.5.3
+requests==2.11.1
+six==1.10.0
+smmap2==2.0.1
