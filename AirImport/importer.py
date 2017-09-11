@@ -149,7 +149,7 @@ class LuftOnlineSiteConfig(object):
                     '; ', separator)
             del self._post_data[uws.BUTTON]
             ext = 'csv' if data[0] != '<' else 'html'
-            with open('{}.{}'.format(file, ext), 'w') as f:
+            with open('{}.{}'.format(file, ext), mode='w', encoding="utf-8") as f:
                 f.write(data)
         except:
             log.warning('*** Error downloading %s', self.substance)
