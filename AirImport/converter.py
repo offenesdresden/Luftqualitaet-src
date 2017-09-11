@@ -88,7 +88,7 @@ class Conversor(object):
                 file, city.name)
             return
 
-        f = open('{}/{}.csv'.format(self.out_dir, city.name), 'w')
+        f = open('{}/{}.csv'.format(self.out_dir, city.name), mode='w', encoding="utf-8")
  
         substances = sorted(self.substances)
 
@@ -118,11 +118,11 @@ class Conversor(object):
                 self.convert_csv_part(StringIO(part))
         if filenames is not None:
             for filename in filenames:
-                self.convert_csv_part(open(filename, 'r'))
+                self.convert_csv_part(open(filename, mode='r', encoding="utf-8"))
             
         if not os.path.exists(self.out_dir):
             os.makedirs(self.out_dir)
-        with open('{}/_cities.csv'.format(self.out_dir), 'w') as f:
+        with open('{}/_cities.csv'.format(self.out_dir), mode='w', encoding="utf-8") as f:
             for c in sorted(self.cities.values()):
                 self.write_csv(c)
                 f.write(c.name + '\n')
@@ -132,7 +132,7 @@ def main(filename = None, data_dir = None, out_dir = 'data',
     if filename is not None:
         return Conversor(
             out_dir = out_dir, basedir = basedir).convert_csv(
-                str_data = open(filename, 'r').read())
+                str_data = open(filename, mode='r', encoding="utf-8").read())
     if data_dir is not None:
         files = [os.path.join(data_dir, f) for f in os.listdir(data_dir)
             if os.path.isfile(os.path.join(data_dir, f))]
